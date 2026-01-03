@@ -1,0 +1,24 @@
+1. Algorithm for Traversal
+
+Goal: Visit and print every element in the array.
+Step 1: Start.
+Step 2: Initialize an index variable i = 0.
+Step 3: Check if i is less than the total number of elements N.
+Step 4: If True:
+Access/Print the element Arr[i].
+Increment i by 1 (i = i + 1).
+Go back to Step 3.
+Step 5: If False (end of array reached), Stop.
+
+2. Algorithm for Insertion
+
+Goal: Add a value VAL at a specific index POS.
+Step 1: Start.
+Step 2: Check if the array is already full (Overflow). If yes, print error and Stop.
+Step 3: Initialize a loop counter i pointing to the last element (N - 1).
+Step 4: Repeat while i >= POS:
+Move the current element to the next position: Arr[i + 1] = Arr[i].
+Decrement i by 1.
+Step 5: Insert the new value at the correct spot: Arr[POS] = VAL.
+Step 6: Increment the total size N = N + 1.
+Step 7: Stop.
