@@ -1,0 +1,51 @@
+1. Basic TerminologiesData Structure: A way to organize data so it can be used efficiently.
+Linear DS: Elements are sequential (e.g., Arrays, Linked Lists, Stacks, Queues).
+Non-Linear DS: Elements are hierarchical (e.g., Trees, Graphs).
+Data Hierarchy: Bit $\to$ Byte $\to$ Field $\to$ Record $\to$ File.
+
+2. Algorithm Analysis (The "Big 3" Notations)
+Time Complexity: How "fast" it runs as input grows.
+Space Complexity: How much "memory" it needs.
+Time-Space Trade-off: Usually, to make an algorithm faster (Time $\downarrow$),
+                     you have to use more memory (Space $\uparrow$).
+
+                     
+Notation    Symbol        Meaning                        Use Case
+Big O        O(n)   Worst Case (Upper Bound)    Max time it could take. (Most important).
+Omega        Ω(n)   Best Case (Lower Bound)     Min time it will take.
+Theta        Θ(n) Average Case (Tight Bound)    The average performance.
+
+3. Array Operations (The Logic Rules)
+Traversal: Visiting every element once. Loop from 0 to n-1.
+
+Insertion (Add Item):
+1.Start loop at the END (n-1).
+
+2.Move backwards to pos.
+
+3.Shift elements RIGHT (arr[i+1] = arr[i]).
+
+4.Update size: n++.
+
+Deletion (Remove Item):
+1.Start loop at POS.
+
+2.Move forwards to end.
+
+3.Shift elements LEFT (arr[i] = arr[i+1]).
+
+4.Update size: n--.
+
+Feature             Linear Search                     Binary Search
+Prerequisite    None (Works on unsorted data)     MUST be Sorted
+Method          Check one by one (Sequential)     Divide & Conquer (Split in half)
+Time Complexity O(n) (Slow for large data)        O(logn) (Very Fast)
+Logic           Loop i from 0 to n                mid = (low + high) / 2
+
+5. "Teacher's Tips" for C Coding
+Index starts at 0: The 5th element is at index 4.
+
+Integer Division: In C, (0 + 9) / 2 is 4, not 4.5. This matters for calculating mid in Binary Search.
+
+Modifying Size: If a function changes the array size (Insertion/Deletion), pass the size as a pointer (int *n),
+ otherwise the change won't be saved outside the function.
