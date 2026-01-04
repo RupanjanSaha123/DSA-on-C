@@ -22,3 +22,41 @@ Decrement i by 1.
 Step 5: Insert the new value at the correct spot: Arr[POS] = VAL.
 Step 6: Increment the total size N = N + 1.
 Step 7: Stop.
+
+3. Algorithm for Deletion
+
+Goal: Remove a value from a specific index POS.
+Step 1: Start.
+Step 2: Check if the array is empty (Underflow). If yes, print error and Stop.
+Step 3: Initialize a loop counter i at the deletion position POS.
+Step 4: Repeat while i < N - 1 (until the second to last element):
+Copy the next element into the current position: Arr[i] = Arr[i + 1].
+Increment i by 1.
+Step 5: Decrement the total size N = N - 1.
+Step 6: Stop.
+
+4. Algorithm for Linear Search
+
+Goal: Find KEY in an unsorted array.
+Step 1: Start.
+Step 2: Initialize index i = 0.
+Step 3: Repeat while i < N:
+Check if Arr[i] == KEY.
+If True: Print "Found at index i" and Go to Step 5 (Success).
+If False: Increment i (i = i + 1).
+Step 4: If loop finishes and KEY was not found, print "Not Found".
+Step 5: Stop
+
+5. Algorithm for Binary Search
+
+Goal: Find KEY in a SORTED array using Divide and Conquer.
+Step 1: Start.
+Step 2: Set Low = 0 and High = N - 1.
+Step 3: Repeat while Low <= High:
+Calculate Middle: Mid = (Low + High) / 2 (Integer division).
+Case A: If Arr[Mid] == KEY, return Mid (Success). Stop.
+Case B: If Arr[Mid] < KEY, the key is in the right half. Set Low = Mid + 1.
+Case C: If Arr[Mid] > KEY, the key is in the left half. Set High = Mid - 1
+Step 4: If loop ends without finding KEY, return "Not Found".
+Step 5: Stop.
+
