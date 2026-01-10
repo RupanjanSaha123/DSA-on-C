@@ -1,0 +1,12 @@
+Push Operation
+Push operation used to insert an element into the stack.
+
+Algorithm:
+STEP1: START
+STEP2: IF TOP = MAX-1
+                PRINT 'OVERFLOW'
+                go to step4
+STEP3: SET TOP = TOP+1
+STEP4: SET STACK [TOP] = VALUE
+STEP5: END
+
