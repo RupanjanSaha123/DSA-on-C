@@ -5,8 +5,59 @@ Algorithm:
 STEP1: START
 STEP2: IF TOP = MAX-1
                 PRINT 'OVERFLOW'
-                go to step4
+                go to step5
 STEP3: SET TOP = TOP+1
 STEP4: SET STACK [TOP] = VALUE
 STEP5: END
+
+Pop Operation
+The pop operation is used to delete the top most element from the stack.
+
+Algorithm:
+STEP1: START
+STEP2: IF TOP = NULL
+                PRINT 'UNDERFLOW'
+                go to STEP5
+STEP3: SET VAL= STACK[TOP]
+STEP4: SET TOP = TOP-1
+STEP5: END
+
+Peek Operation
+Peek operation is the operation which returns the top most value of the stack without deleting it from the stack.
+
+Algorithm:
+STEP1: START
+STEP2: IF TOP = NULL
+                PRINT 'STACK IS EMPTY'
+                go to STEP4
+STEP3: RETURN STACK[TOP]
+STEP4: END
+
+OPERATIONS ON A LINKED STACK
+
+Push Operation
+The push operation is used to insert an element into the stack
+
+STEP1: START
+STEP2: Allocate memory for the new
+        node and name it as NEW_NODE
+STEP3:  SET NEW_NODE -> DATA = VAL
+STEP4: IF TOP = NULL
+        SET NEW_NODE NEXT = NULL
+        SET TOP = NEW_NODE
+Step5: END    
+
+APPLICATIONS OF STACKS
+
+In this section we will discuss typical problems where stacks can be easily applied for a simple
+and efficient solution. The topics that will be discussed in this section include the following:
+
+∑ Reversing a list
+∑ Parentheses checker
+∑ Conversion of an infix expression into a postfix expression
+∑ Evaluation of a postfix expression
+∑ Conversion of an infix expression into a prefix expression
+∑ Evaluation of a prefix expression
+∑ Recursion
+∑ Tower of Hanoi
 
