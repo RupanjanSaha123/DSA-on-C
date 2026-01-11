@@ -61,3 +61,55 @@ and efficient solution. The topics that will be discussed in this section includ
 ∑ Recursion
 ∑ Tower of Hanoi
 
+
+Convert the following infix expressions into postfix expressions.
+
+ 1.(A–B) * (C+D)
+[AB–] * [CD+]
+AB–CD+*
+
+2.(A + B) / (C + D) – (D * E)
+[AB+] / [CD+] – [DE*]
+[AB+CD+/] – [DE*]
+AB+CD+/DE*–
+
+Convert the following infix expressions into prefix expressions.
+Solution
+
+(a) (A + B) * C
+(+AB)*C
+*+ABC
+
+(b) (A–B) * (C+D)
+[–AB] * [+CD]
+*–AB+CD
+
+(c) (A + B) / ( C + D) – ( D * E)
+[+AB] / [+CD] – [*DE]
+[/+AB+CD] – [*DE]
+–/+AB+CD*DE
+
+Solution
+Infix Character
+Scanned       Stack          Postfix Expression
+              (
+A             (               A
+–             ( –             A
+(             ( – (           A
+B             ( – (           A B
+/             ( – ( /         A B
+C             ( – ( /         A B C
++             ( – ( +         A B C /
+(             ( – ( + (       A B C /
+D             ( – ( + (       A B C / D
+%             ( – ( + ( %     A B C / D
+E             ( – ( + ( %     A B C / D E
+*             ( – ( + ( % *   A B C / D E
+F             ( – ( + ( % *   A B C / D E F
+)             ( – ( +         A B C / D E F * %
+/             ( – ( + /       A B C / D E F * %
+G             ( – ( + /       A B C / D E F * % G
+)             ( –             A B C / D E F * % G / +
+*             ( – *           A B C / D E F * % G / +
+H             ( – *           A B C / D E F * % G / + H
+)                             A B C / D E F * % G / + H * –
