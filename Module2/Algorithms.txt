@@ -89,6 +89,7 @@ Solution
 [/+AB+CD] – [*DE]
 –/+AB+CD*DE
 
+(b) A – (B / C + (D % E * F) / G)* H
 Solution
 Infix Character
 Scanned       Stack          Postfix Expression
