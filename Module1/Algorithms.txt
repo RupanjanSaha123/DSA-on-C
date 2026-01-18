@@ -56,7 +56,7 @@ Step 3: Repeat while Low <= High:
 Calculate Middle: Mid = (Low + High) / 2 (Integer division).
 Case A: If Arr[Mid] == KEY, return Mid (Success). Stop.
 Case B: If Arr[Mid] < KEY, the key is in the right half. Set Low = Mid + 1.
-Case C: If Arr[Mid] > KEY, the key is in the left half. Set High = Mid - 1
+Case C: If Arr[Mid] > KEY, the key is in the left half. Set High = Mid - 1.
 Step 4: If loop ends without finding KEY, return "Not Found".
 Step 5: Stop.
 

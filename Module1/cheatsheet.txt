@@ -1,4 +1,5 @@
-1. Basic TerminologiesData Structure: A way to organize data so it can be used efficiently.
+1. Basic Terminologies
+Data Structure: A way to organize data so it can be used efficiently.
 Linear DS: Elements are sequential (e.g., Arrays, Linked Lists, Stacks, Queues).
 Non-Linear DS: Elements are hierarchical (e.g., Trees, Graphs).
 Data Hierarchy: Bit $\to$ Byte $\to$ Field $\to$ Record $\to$ File.
@@ -13,7 +14,7 @@ Time-Space Trade-off: Usually, to make an algorithm faster (Time $\downarrow$),
 Notation    Symbol        Meaning                        Use Case
 Big O        O(n)   Worst Case (Upper Bound)    Max time it could take. (Most important).
 Omega        Ω(n)   Best Case (Lower Bound)     Min time it will take.
-Theta        Θ(n) Average Case (Tight Bound)    The average performance.
+Theta        Θ(n)  Average Case (Tight Bound)   The average performance.
 
 3. Array Operations (The Logic Rules)
 Traversal: Visiting every element once. Loop from 0 to n-1.
