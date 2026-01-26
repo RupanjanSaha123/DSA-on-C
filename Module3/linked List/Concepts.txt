@@ -164,3 +164,88 @@ while (temp != NULL) {
 }
 printf("NULL");
 
+Visit Porgramms.c for full code.
+
+🔁Traversing a Singly Linked List (Step by Step)
+
+🔹 What is Traversing?
+Traversing means visiting each node of the linked list one by one, usually:
+to display data
+to search
+to count nodes.
+
+🔹 What does “insert at end” mean?
+
+Create a new node
+Traverse the list till the last node
+Make the last node point to the new node
+New node’s next should be NULL
+
+Before:
+
+10 → 20 → 30 → NULL
+
+After inserting 40 at end:
+
+10 → 20 → 30 → 40 → NULL
+
+STEP-BY-STEP EXPLANATION
+
+🔹 Step 1: Create the node structure
+We need a self-referential structure.
+
+struct Node {
+    int data;
+    struct Node *next;
+};
+
+🔹 Step 2: Declare head pointer
+head stores the address of the first node.
+
+struct Node *head = NULL;
+
+If head == NULL, the list is empty.
+
+🔹 Step 3: Create a new node
+Allocate memory dynamically.
+
+struct Node *newNode;
+newNode = (struct Node *)malloc(sizeof(struct Node));
+
+🔹 Step 4: Assign data to the new node
+
+newNode->data = value;
+newNode->next = NULL;
+👉 next = NULL because it will be the last node.
+
+🔹 Step 5: Check if list is empty
+Case 1️⃣: Empty list
+If head == NULL, then:
+head = newNode;
+
+That’s it — new node becomes the first and last node.
+Case 2️⃣: List is NOT empty
+You must traverse till the last node.
+
+struct Node *temp = head;
+while (temp->next != NULL) {
+    temp = temp->next;
+}
+
+
+Now temp is pointing to the last node.
+
+🔹 Step 6: Link last node to new node
+
+temp->next = newNode;
+
+✔ Insertion completed
+
+🔹 Step 7: Display the linked list (Traversal)
+
+temp = head;
+while (temp != NULL) {
+    printf("%d -> ", temp->data);
+    temp = temp->next;
+}
+printf("NULL");
