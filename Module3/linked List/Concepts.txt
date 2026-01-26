@@ -1,0 +1,101 @@
+Linked list is basically a way of storing any data with address. 
+It means we can store datas in two ways --
+  * Array
+  * Linked list
+In the array when we store data then it has no address. just datas stored in a row manner one after another.
+In Linked list we have two parts when we storing a data.
+  1. data
+  2. address
+Data + Address = Node 
+Address of the first node is known as Pointer.
+Previous Node link the next node with the address of the next node.  
+
+Here is the difference between Array and linked list is given in an easy way.
+
+🔹 Array vs Linked List (Simple Explanation)
+
+ 1. Memory Structure
+Array
+Stored in continuous (contiguous) memory
+All elements are next to each other
+Linked List
+Stored in non-continuous memory
+Each node contains data + address (pointer) of next node
+
+Aftrall Linked list is the linked representation of the list.
+
+ 2. Size
+Array
+Fixed size (in most languages like C)
+Cannot grow or shrink easily
+Linked List
+Dynamic size
+Can grow or shrink during runtime
+
+ 3. Accessing Elements
+Array
+Direct access using index
+arr[5] → O(1)
+Linked List
+Sequential access only
+Must start from head → O(n)
+
+ 4. Insertion & Deletion
+Array
+Costly
+Elements need to be shifted
+→ O(n)
+Linked List
+Efficient
+Just change pointers
+→ O(1) (if position is known)
+
+ 5. Memory Usage
+Array
+Less memory (only data stored)
+Linked List
+More memory (data + pointer for each node)
+
+ 6. Cache Friendliness
+Array
+Cache-friendly (continuous memory)
+Faster traversal
+Linked List
+Not cache-friendly
+Slower traversal
+
+ 7. Wastage of Memory
+Array
+Possible wastage if size > elements
+Linked List
+No wastage (memory allocated as needed)
+
+🔹 What is a Self-Referential Structure?
+A self-referential structure is a structure that contains a pointer to another variable of the same structure type.
+
+👉 In short:
+A structure that refers to itself.
+
+This is mainly used to create linked data structures like:
+Linked Lists
+Trees
+Graphs
+
+🔹 Why do we need it?
+Because structures cannot contain themselves directly, but they can contain pointers to their own type.
+This allows us to connect multiple nodes dynamically.
+
+🔹 Example in C (Linked List Node)
+struct Node {
+    int data;
+    struct Node *next;
+};
+
+Explanation:
+data → stores the value
+next → stores the address of another Node
+struct Node *next;
+👉 This line makes it self-referential
+
+[data | next] → [data | next] → [data | NULL]
+Each node points to the next node of the same structure type.
