@@ -101,3 +101,44 @@ Enter data for node 2: 20
 Enter data for node 3: 30
 
 Singly Linked List: 10 -> 20 -> 30 -> NULL
+
+**Program of creating a Simply linked list.**
+Complete Simple Program
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node *next;
+};
+
+int main() {
+    struct Node *head = NULL;
+    struct Node *second;
+
+    // First node
+    head = (struct Node *)malloc(sizeof(struct Node));
+    head->data = 10;
+    head->next = NULL;
+
+    // Second node
+    second = (struct Node *)malloc(sizeof(struct Node));
+    second->data = 20;
+    second->next = NULL;
+
+    // Linking
+    head->next = second;
+
+    // Display list
+    struct Node *temp = head;
+    while (temp != NULL) {
+        printf("%d -> ", temp->data);
+        temp = temp->next;
+    }
+    printf("NULL");
+
+    return 0;
+}
+
+🔹 Output
+10 -> 20 -> NULL

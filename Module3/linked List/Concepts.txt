@@ -99,3 +99,68 @@ struct Node *next;
 
 [data | next] → [data | next] → [data | NULL]
 Each node points to the next node of the same structure type.
+
+🧠 Step-by-Step: How to Create a Singly Linked List in C
+
+1.Create the Node Structure
+We need a structure that can point to another structure of the same type.
+
+struct Node {
+    int data;
+    struct Node *next;
+};
+
+2.Declare Head Pointer
+The head pointer stores the address of the first node.
+
+struct Node *head = NULL;
+
+3.Create a New Node (Memory Allocation)
+We dynamically allocate memory for a node using malloc().
+
+struct Node *newNode;
+newNode = (struct Node *)malloc(sizeof(struct Node));
+
+4.Assign Data to the Node
+
+newNode->data = 10;
+newNode->next = NULL;
+
+5.Make This Node the First Node
+Since the list is empty:
+
+head = newNode;
+
+Now the list looks like:
+
+head → [10 | NULL]
+
+6.Create More Nodes (Repeat Process)
+Create another node:
+
+struct Node *second;
+second = (struct Node *)malloc(sizeof(struct Node));
+
+second->data = 20;
+second->next = NULL;
+
+7.Link Nodes Together
+Connect the first node to the second:
+
+head->next = second;
+
+Now:
+
+head → [10 | next] → [20 | NULL]
+
+8.Traversing (Printing) the Linked List
+We use a temporary pointer to move through the list.
+
+struct Node *temp = head;
+
+while (temp != NULL) {
+    printf("%d -> ", temp->data);
+    temp = temp->next;
+}
+printf("NULL");
+
