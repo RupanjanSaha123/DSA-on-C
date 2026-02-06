@@ -114,3 +114,42 @@ G             ( – ( + /       A B C / D E F * % G
 *             ( – *           A B C / D E F * % G / +
 H             ( – *           A B C / D E F * % G / + H
 )                             A B C / D E F * % G / + H * –
+
+Queues
+
+1. Simple Queue (Linear Queue)
+ The standard FIFO (First-In-First-Out) structure. Elements are added at the Rear and removed from the Front.
+ Operations & Algorithm
+ Enqueue: Check if Rear == MAX-1 (Overflow). If not, increment Rear and add the element.
+ Dequeue: Check if Front == -1 or Front > Rear (Underflow). If not, return the element at Front and increment Front.
+ Complexity AnalysisTime: $O(1)$ for both Enqueue and Dequeue.
+ Space: $O(n)$.
+ Drawback: Memory Wastage. Once Front moves forward, the space behind it cannot be reused even if the queue is technically not full.
+
+2. Circular Queue
+A circular queue solves the memory wastage of linear queues by connecting the last position back to the first.
+ It uses the Modulo Operator ($\%$) for wrapping around.
+ Operations & Algorithm
+ Enqueue: Check if (Rear + 1) % MAX == Front (Full). If not, update Rear = (Rear + 1) % MAX and insert.
+ Dequeue: Check if Front == -1 (Empty). If not, extract element. If Front == Rear, reset both to -1 (last element removed);
+  otherwise, update Front = (Front + 1) % MAX.
+Complexity Analysis
+  Time: O(1) for Enqueue and Dequeue.
+  Space: O(n).
+  Advantage: Efficient memory utilization by reusing vacated slots.
+   
+3. Priority Queue
+ In this type, each element is associated with a priority. Elements with higher priority are dequeued before elements with lower priority, regardless of their insertion order.
+ 
+Operations & AlgorithmEnqueue: Insert the element into the structure (often a Binary Heap).
+ Dequeue: Remove the element with the highest priority (the root of the heap).
+ Algorithm (Max-Heap): After removal, move the last element to the root and "Heapify" down to maintain the heap property.
+Complexity Analysis
+ Time:Linked List/Array: O(n) for insertion or deletion (to maintain order).
+ Binary Heap (Most common): O(\log n) for both Enqueue and Dequeue.
+ Space: O(n).
+
+ Queue Type            Enqueue      Dequeue               Best Use Case
+   Simple                O(1)        O(1)              Basic buffer tasks
+   Circular              O(1)        O(1)          Memory-constrained systems
+   Priority             O(logn)     O(logn)  "CPU Scheduling, Dijkstra's Algorithm"
