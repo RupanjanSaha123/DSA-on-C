@@ -22,7 +22,7 @@ Linked List
 Stored in non-continuous memory
 Each node contains data + address (pointer) of next node
 
-Aftrall Linked list is the linked representation of the list.
+Afterall Linked list is the linked representation of the list.
 
  2. Size
 Array

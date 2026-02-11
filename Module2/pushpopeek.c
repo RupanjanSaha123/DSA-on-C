@@ -1,4 +1,4 @@
-1.Write a program to perform Push, Pop, and Peek operations on a stack.
+1. Write a program to perform Push, Pop, and Peek operations on a stack.
 
 #include <stdio.h>
 #include <stdlib.h>

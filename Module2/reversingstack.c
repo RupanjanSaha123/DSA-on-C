@@ -2,7 +2,7 @@ Write a program to reverse a list of given numbers.
 
 #include <stdio.h>
 #include <conio.h>
-int stk[10];
+    int stk[10];
 int top =–1;
 int pop();
 void push(int);
