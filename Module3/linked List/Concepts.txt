@@ -219,12 +219,12 @@ newNode->next = NULL;
 👉 next = NULL because it will be the last node.
 
 🔹 Step 5: Check if list is empty
-Case 1️⃣: Empty list
+Case 1️: Empty list
 If head == NULL, then:
 head = newNode;
 
 That’s it — new node becomes the first and last node.
-Case 2️⃣: List is NOT empty
+Case 2️: List is NOT empty
 You must traverse till the last node.
 
 struct Node *temp = head;
@@ -249,3 +249,4 @@ while (temp != NULL) {
     temp = temp->next;
 }
 printf("NULL");
+
