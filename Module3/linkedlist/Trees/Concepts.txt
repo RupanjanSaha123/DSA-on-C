@@ -1,0 +1,33 @@
+What is a Tree?
+A Tree is a non-linear data structure made of nodes connected by edges.
+
+Unlike arrays/linked lists:
+Linear → one after another
+Tree → hierarchical (parent → child)
+
+Real-life examples:
+File system
+Organization structure
+Expression tree
+Database indexing
+
+Basic Tree Terminologies
+Consider this example tree:
+
+        A
+      /   \
+     B     C
+    / \   /
+   D   E F
+
+Important Terms
+Term	                Meaning
+Root	               Topmost node (A)
+Parent	               Node having children (A is parent of B, C)
+Child	               Node under parent
+Leaf	               Node with no children (D, E, F)
+Internal node	       Node with at least one child
+Degree	               No. of children
+Level	               Distance from root
+Height	               Longest path from root to leaf
+Subtree	               Any tree inside a tree
