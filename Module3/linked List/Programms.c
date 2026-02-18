@@ -274,3 +274,4 @@ Enter data: 30
 Do you want to insert another node? (1/0): 0
 
 Linked List: 10 -> 20 -> 30 -> NULL
+

@@ -203,7 +203,6 @@ struct Node {
 head stores the address of the first node.
 
 struct Node *head = NULL;
-
 If head == NULL, the list is empty.
 
 🔹 Step 3: Create a new node
@@ -238,7 +237,6 @@ Now temp is pointing to the last node.
 🔹 Step 6: Link last node to new node
 
 temp->next = newNode;
-
 ✔ Insertion completed
 
 🔹 Step 7: Display the linked list (Traversal)
@@ -249,3 +247,4 @@ while (temp != NULL) {
     temp = temp->next;
 }
 printf("NULL");
+
