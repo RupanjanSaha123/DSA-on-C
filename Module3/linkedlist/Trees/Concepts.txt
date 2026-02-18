@@ -31,3 +31,192 @@ Degree	               No. of children
 Level	               Distance from root
 Height	               Longest path from root to leaf
 Subtree	               Any tree inside a tree
+
+Binary Tree
+A tree where each node has at most 2 children.
+
+      10
+     /  \
+    5   20
+
+Types of Binary Trees
+1️⃣ Full Binary Tree
+Every node has either 0 or 2 children.
+
+2️⃣ Complete Binary Tree
+All levels filled except possibly last, filled left to right.
+
+3️⃣ Perfect Binary Tree
+All internal nodes have 2 children & all leaves at same level.
+
+4️⃣ Skewed Tree
+All nodes either left or right.
+
+Operations on Binary Tree
+1. Traversals (VERY IMPORTANT)
+Inorder (LNR)
+Left → Node → Right
+
+Preorder (NLR)
+Node → Left → Right
+
+Postorder (LRN)
+Left → Right → Node
+
+Algorithm (Recursive Inorder)
+void inorder(struct node* root){
+    if(root != NULL){
+        inorder(root->left);
+        printf("%d ", root->data);
+        inorder(root->right);
+    }
+}
+
+Time Complexity
+Traversal → O(n)
+
+Threaded Binary Tree
+
+Problem in normal binary tree:
+👉 Many NULL pointers waste memory.
+Threaded tree uses NULL pointers to store inorder predecessor/successor.
+Types:
+Single Threaded
+Double Threaded
+
+Advantage:
+No recursion or stack needed for traversal.
+Traversal → O(n)
+Space reduced.
+
+Binary Search Tree (BST)
+
+Definition
+Left subtree < Root < Right subtree
+
+Example:
+
+        50
+       /  \
+     30    70
+    /  \   / \
+  20   40 60  80
+
+🔹 BST Operations
+1️⃣ Search
+if(key < root->data)
+    go left
+else
+    go right
+
+Time Complexity:
+Average → O(log n)
+Worst (skewed) → O(n)
+
+2️⃣ Insertion
+Insert like search until NULL.
+Time:
+Avg → O(log n)
+Worst → O(n)
+
+3️⃣ Deletion (Very Important)
+3 Cases:
+Leaf node → delete directly
+One child → replace with child
+Two children → replace with:
+
+Inorder successor (minimum in right subtree)
+Time:
+Avg → O(log n)
+Worst → O(n)
+
+AVL Tree (Self Balancing BST)
+Problem in BST:
+It can become skewed → O(n)
+
+Solution → AVL Tree (height balanced tree)
+
+Balance Factor
+BF = Height(left) - Height(right)
+Allowed values:
+-1, 0, +1
+
+If not → rotate
+🔄 Rotations in AVL
+1️⃣ LL Rotation
+2️⃣ RR Rotation
+3️⃣ LR Rotation
+4️⃣ RL Rotation
+
+These rotations maintain:
+Time complexity → O(log n)
+
+
+Operations:
+Search → O(log n)
+Insert → O(log n)
+Delete → O(log n)
+
+Applications of Binary Trees
+
+Expression Tree (used in compilers)
+Heap (Priority Queue)
+Syntax tree
+Decision tree
+Huffman coding
+BST for searching
+AVL/Red Black in databases
+
+B-Tree
+
+Used in Databases & File Systems
+A B-Tree of order m:
+Max children = m
+Min children = ceil(m/2)
+All leaves at same level
+Multi-way search tree
+
+Properties
+For order m:
+Max keys = m-1
+Min keys = ceil(m/2)-1
+
+Operations
+Search
+Binary search inside node.
+Time:
+O(log n)
+Insert
+Insert in leaf
+If overflow → split
+Promote middle key
+
+Delete
+Remove key
+If underflow → borrow or merge
+
+ 9. B+ Tree
+Improvement of B-Tree.
+
+Difference:
+
+       B-Tree	                     B+ Tree
+Data in internal + leaf	        Data only in leaf
+Leaves not linked	            Leaves linked
+Slower range query	            Faster range query
+
+Used in:
+MySQL
+Oracle
+File indexing
+Time:
+O(log n)
+
+🔥 Complexity Summary
+Tree Type	             Search	          Insert	           Delete
+Binary Tree	              O(n)	           O(n)	                O(n)
+BST (avg)	            O(log n)	     O(log n)	          O(log n)
+BST (worst)	              O(n)	           O(n)	                O(n)
+AVL	                    O(log n)	     O(log n)	          O(log n)
+B-Tree	                O(log n)	     O(log n)	          O(log n)
+B+ Tree	                O(log n)	     O(log n)	          O(log n)
