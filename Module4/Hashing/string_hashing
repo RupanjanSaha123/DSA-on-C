@@ -1,0 +1,222 @@
+/*
+ * =============================================
+ *  HASHING - Part 4: String Hashing
+ * =============================================
+ *
+ * Real-world use: hashing strings like names,
+ * words, or keys in dictionaries/phone books.
+ *
+ * Simple approaches:
+ *   1. Sum of ASCII values -> poor distribution
+ *   2. djb2 algorithm     -> widely used, fast, good distribution
+ *
+ * djb2 formula:
+ *   hash = 5381
+ *   for each char c: hash = hash * 33 + c
+ *
+ * This program simulates a Phone Directory:
+ *   Key   = Person's Name (string)
+ *   Value = Phone Number  (int)
+ * =============================================
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define TABLE_SIZE 10
+#define MAX_LEN    50
+
+// ---- Node for chaining (key-value pairs) ----
+struct Node {
+    char key[MAX_LEN];
+    int  value;
+    struct Node* next;
+};
+
+struct Node* hashTable[TABLE_SIZE];
+
+// ---- Method 1: Simple ASCII Sum (BAD - poor distribution) ----
+unsigned int simpleHash(char* str) {
+    unsigned int sum = 0;
+    while (*str) {
+        sum += (unsigned char)(*str);
+        str++;
+    }
+    return sum % TABLE_SIZE;
+}
+
+// ---- Method 2: djb2 Hash (GOOD - widely recommended) ----
+unsigned int djb2Hash(char* str) {
+    unsigned int hash = 5381;
+    int c;
+    while ((c = (unsigned char)(*str++))) {
+        hash = ((hash << 5) + hash) + c;  // hash * 33 + c
+    }
+    return hash % TABLE_SIZE;
+}
+
+// Use djb2 as our primary hash function
+unsigned int hashFunction(char* str) {
+    return djb2Hash(str);
+}
+
+// ---- Initialize ----
+void initTable() {
+    for (int i = 0; i < TABLE_SIZE; i++) {
+        hashTable[i] = NULL;
+    }
+}
+
+// ---- Insert Key-Value Pair ----
+void insert(char* key, int value) {
+    unsigned int index = hashFunction(key);
+
+    // If key already exists, update its value
+    struct Node* temp = hashTable[index];
+    while (temp != NULL) {
+        if (strcmp(temp->key, key) == 0) {
+            temp->value = value;
+            printf("Updated  '%s' => %d (at index %u)\n", key, value, index);
+            return;
+        }
+        temp = temp->next;
+    }
+
+    // Create new node and insert at front of chain
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    strcpy(newNode->key, key);
+    newNode->value = value;
+    newNode->next  = hashTable[index];
+    hashTable[index] = newNode;
+    printf("Inserted '%s' => %d at index %u\n", key, value, index);
+}
+
+// ---- Search by Key ----
+void search(char* key) {
+    unsigned int index = hashFunction(key);
+    struct Node* temp = hashTable[index];
+
+    while (temp != NULL) {
+        if (strcmp(temp->key, key) == 0) {
+            printf("Found: '%s' -> Phone: %d\n", key, temp->value);
+            return;
+        }
+        temp = temp->next;
+    }
+    printf("'%s' NOT found in the phone directory\n", key);
+}
+
+// ---- Delete by Key ----
+void delete(char* key) {
+    unsigned int index = hashFunction(key);
+    struct Node* temp = hashTable[index];
+    struct Node* prev = NULL;
+
+    while (temp != NULL) {
+        if (strcmp(temp->key, key) == 0) {
+            if (prev == NULL)
+                hashTable[index] = temp->next;
+            else
+                prev->next = temp->next;
+            free(temp);
+            printf("Deleted '%s' from index %u\n", key, index);
+            return;
+        }
+        prev = temp;
+        temp = temp->next;
+    }
+    printf("'%s' not found. Cannot delete.\n", key);
+}
+
+// ---- Display Table ----
+void display() {
+    printf("\n======== Phone Directory Hash Table ========\n");
+    for (int i = 0; i < TABLE_SIZE; i++) {
+        printf("Index [%d]: ", i);
+        struct Node* temp = hashTable[i];
+        if (temp == NULL) { printf("NULL\n"); continue; }
+        while (temp != NULL) {
+            printf("('%s':%d)", temp->key, temp->value);
+            if (temp->next != NULL) printf(" -> ");
+            temp = temp->next;
+        }
+        printf("\n");
+    }
+    printf("============================================\n");
+}
+
+// ---- Compare the Two Hash Methods ----
+void compareHashFunctions() {
+    char* words[] = {"apple", "mango", "grape", "Alice", "alice", "Bob"};
+    int n = 6;
+
+    printf("\n--- Hash Method Comparison (tableSize = %d) ---\n", TABLE_SIZE);
+    printf("%-10s  %-12s  %-12s\n", "Word", "simpleHash", "djb2Hash");
+    printf("-------------------------------------------\n");
+    for (int i = 0; i < n; i++) {
+        printf("%-10s  %-12u  %-12u\n",
+               words[i],
+               simpleHash(words[i]),
+               djb2Hash(words[i]));
+    }
+    printf("\n(Note: 'Alice' vs 'alice' - djb2 handles case sensitivity correctly)\n");
+}
+
+// ---- Free Memory ----
+void freeTable() {
+    for (int i = 0; i < TABLE_SIZE; i++) {
+        struct Node* temp = hashTable[i];
+        while (temp != NULL) {
+            struct Node* toFree = temp;
+            temp = temp->next;
+            free(toFree);
+        }
+        hashTable[i] = NULL;
+    }
+}
+
+int main() {
+    initTable();
+
+    printf("=== String Hashing - Phone Directory Demo ===\n\n");
+
+    printf("--- Inserting Contacts ---\n");
+    insert("Alice",   9876543210);
+    insert("Bob",     8765432109);
+    insert("Charlie", 7654321098);
+    insert("Dave",    6543210987);
+    insert("Eve",     5432109876);
+    insert("Alice",   1111111111);   // Update existing key
+
+    display();
+
+    printf("\n--- Looking Up Contacts ---\n");
+    search("Bob");
+    search("Alice");    // Should show updated number
+    search("Unknown"); // Not in table
+
+    printf("\n--- Deleting a Contact ---\n");
+    delete("Bob");
+    search("Bob");      // Should say not found now
+
+    compareHashFunctions();
+
+    freeTable();
+    return 0;
+}
+
+/*
+ * WHY djb2 IS BETTER THAN ASCII SUM HASH:
+ * -----------------------------------------
+ * "abc" and "bca" have the SAME ASCII sum -> SAME hash!  (BAD)
+ * djb2 weighs character POSITION differently -> different hashes (GOOD)
+ *
+ * REAL-WORLD USE CASES OF STRING HASHING:
+ * - Phone directories / Contacts
+ * - Password storage (one-way hashing for security)
+ * - Dictionary / Hashmap implementations
+ * - Compiler symbol tables
+ * - Database indexing
+ * - Spell checkers
+ */
